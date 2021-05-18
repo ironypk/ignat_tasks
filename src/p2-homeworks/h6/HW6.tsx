@@ -3,14 +3,17 @@ import SuperEditableSpan from "./common/c4-SuperEditableSpan/SuperEditableSpan";
 import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
 import {restoreState, saveState} from "./localStorage/localStorage";
 
+const EDITABLE_VALUE = "EDITABLE_VALUE "
+
 function HW6() {
     const [value, setValue] = useState<string>("");
 
     const save = () => {
-        saveState<string>("editable-span-value", value);
+        saveState<string>(EDITABLE_VALUE, value);
     };
     const restore = () => {
-        // setValue();
+        const state = restoreState<string>(EDITABLE_VALUE, 'Hello  world')
+        setValue(state)
     };
 
     return (
